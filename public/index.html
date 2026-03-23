@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<title>Aniversário</title>
+
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-200 to-blue-100 flex items-center justify-center p-4">
+
+<div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
+
+<img
+src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d"
+class="w-full h-48 object-cover"
+/>
+
+<div class="p-6 text-center">
+
+<h1 class="text-3xl font-bold text-gray-800 mb-2">
+Aniversário de Theo
+</h1>
+
+<p class="text-gray-500 mb-6 flex items-center justify-center gap-2">
+<i data-lucide="calendar"></i>
+14 de Março de 2026
+</p>
+
+<p class="text-gray-600 mb-6 flex items-center justify-center gap-2">
+<i data-lucide="map-pin"></i>
+Espaço Celebration
+</p>
+
+<div class="relative mb-4">
+
+<i data-lucide="user" class="absolute left-3 top-3 text-gray-400"></i>
+
+<input
+id="name"
+type="text"
+placeholder="Digite seu nome completo"
+class="border w-full pl-10 p-3 rounded-lg focus:ring-2 focus:ring-blue-400"
+/>
+
+</div>
+
+<button
+onclick="searchName()"
+class="bg-blue-500 text-white w-full py-3 rounded-lg hover:bg-blue-600 transition flex items-center justify-center gap-2 mb-4"
+>
+<i data-lucide="party-popper"></i>
+Confirmar presença
+</button>
+<p class="text-gray-400 mb-6 flex items-center justify-center gap-2">
+Confirme sua presença até dia 10/03
+</p>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+</html>

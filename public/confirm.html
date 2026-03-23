@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<title>Confirmar presença</title>
+
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-200 to-blue-100 flex items-center justify-center p-4">
+
+<div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
+
+<img
+src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d"
+class="w-full h-48 object-cover"
+/>
+
+<div class="p-6 text-center">
+
+<h2 class="text-2xl font-semibold mb-4">
+Olá, <span id="guestName"></span>!
+</h2>
+
+<div class="mb-6">
+
+<p class="text-gray-600 mb-4 flex items-center justify-center gap-2">
+<i data-lucide="users"></i>
+Quantos acompanhantes <b>adultos</b> irão com você?
+</p>
+
+<!-- contador -->
+<div class="flex items-center justify-center gap-6">
+
+<!-- botão diminuir -->
+<button
+onclick="decrease()"
+class="w-12 h-12 rounded-full bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center transition shadow active:scale-95"
+>
+<i data-lucide="minus" class="w-5 h-5"></i>
+</button>
+
+<!-- número -->
+<span
+id="companionsDisplay"
+class="text-3xl font-bold w-10 text-center"
+>
+0
+</span>
+
+<!-- botão aumentar -->
+<button
+onclick="increase()"
+class="w-12 h-12 rounded-full bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center transition shadow active:scale-95"
+>
+<i data-lucide="plus" class="w-5 h-5"></i>
+</button>
+
+</div>
+
+<!-- input invisível que será enviado -->
+<input
+id="companions"
+type="hidden"
+value="0"
+/>
+
+</div>
+
+<button
+onclick="confirmPresence()"
+class="bg-green-500 text-white w-full py-3 rounded-lg hover:bg-green-600 transition flex items-center justify-center gap-2 mb-3"
+>
+<i data-lucide="check-circle"></i>
+Confirmar
+</button>
+
+<button
+onclick="goBack()"
+class="bg-gray-300 text-gray-700 w-full py-3 rounded-lg hover:bg-gray-400 transition flex items-center justify-center gap-2"
+>
+<i data-lucide="arrow-left"></i>
+Voltar
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+document.getElementById("guestName").innerText =
+localStorage.getItem("guestName")
+
+lucide.createIcons();
+</script>
+
+</body>
+</html>

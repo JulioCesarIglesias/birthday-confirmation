@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<title>Lista de Convidados</title>
+
+</head>
+
+<body class="min-h-screen bg-blue-100 p-4">
+
+<div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-4 sm:p-6">
+
+<h1 class="text-xl sm:text-2xl font-bold mb-6 flex items-center gap-2 justify-center sm:justify-start">
+<i data-lucide="users"></i>
+Lista de Presenças
+</h1>
+
+<!-- container responsivo -->
+<div class="overflow-x-auto">
+
+<table class="w-full min-w-[400px] border-collapse">
+
+<thead>
+<tr class="bg-gray-100 text-sm sm:text-base">
+<th class="p-2 sm:p-3 text-left">Nome</th>
+<th class="p-2 sm:p-3 text-center">Acompanhantes</th>
+<th class="p-2 sm:p-3 text-center">Total</th>
+</tr>
+</thead>
+
+<tbody id="guestTable"></tbody>
+
+</table>
+
+</div>
+
+<div class="mt-6 text-base sm:text-lg font-semibold text-center sm:text-right">
+Total de pessoas confirmadas:
+<span id="totalPeople">0</span>
+</div>
+
+</div>
+
+<script>
+
+async function loadGuests(){
+
+const response = await fetch("/guests")
+const guests = await response.json()
+
+const table = document.getElementById("guestTable")
+
+let total = 0
+
+guests.forEach(guest => {
+
+const companions = Number(guest.companions)
+const peopleTotal = companions + 1
+
+total += peopleTotal
+
+const row = `
+<tr class="border-b text-sm sm:text-base">
+<td class="p-2 sm:p-3">${guest.name}</td>
+<td class="p-2 sm:p-3 text-center">${companions}</td>
+<td class="p-2 sm:p-3 text-center font-semibold">${peopleTotal}</td>
+</tr>
+`
+
+table.innerHTML += row
+
+})
+
+document.getElementById("totalPeople").innerText = total
+
+}
+
+loadGuests()
+
+lucide.createIcons()
+
+</script>
+
+</body>
+</html>
